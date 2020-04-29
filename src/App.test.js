@@ -1,9 +1,20 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import { expect } from 'chai'
+import React from 'react'
+import { shallow } from 'enzyme'
+import sinon from 'sinon'
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+import GuessCount from './GuessCount'
+import App from './App'
+import Card from './Card'
+
+describe('<App />', () => {
+    it('renders without crashing', () => {
+        const wrapper = shallow(<App />)
+    })
+    it('contains a zero-guess counter', () => {
+        const wrapper = shallow(<App />)
+
+        expect(wrapper).to.contain(<GuessCount guesses={0} />)
+    })
+})
+
